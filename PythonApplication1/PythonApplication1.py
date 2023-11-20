@@ -61,7 +61,7 @@ def TCPSweep():
             OpenSocket.close()
     print(OpenTCP)
 
-TCPSweep()
+print (CommonPortScan())
             
     
     
