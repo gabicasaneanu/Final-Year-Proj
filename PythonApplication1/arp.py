@@ -1,7 +1,10 @@
+
 import subprocess
 from scapy.all import *
+from scapy.layers.l2 import ARP, Ether
+from scapy.sendrecv import srp
 
-interface = "en0"
+
 
 
 def getDefaultGateway():
@@ -15,15 +18,23 @@ def getDefaultGateway():
 
 
 defaultGatewayIP = getDefaultGateway()
-
-target_ip = "192.168.0.63"
+interface = "en0"
+target_ip = "192.168.0.19"
 broadcast_mac = "ff:ff:ff:ff:ff:ff"
 packets = 50
 
-def getMac(mac_ip):
-    a,b = srp(Ether(dst=broadcast_mac)/ARP(pdst = IP)
+def getMac(IP):
+    ans, unans = srp(Ether(dst=broadcast_mac)/ARP(pdst = IP), timeout =2,
+iface=interface, inter=0.1)
+    for send,recieve in ans:
+        return recieve.sprintf(r"%Ether.src%")
+    return None
 
 
+gateway_mac = getMac(defaultGatewayIP)
+print("gateway max" + gateway_mac)
+
+ 
 
 
 
