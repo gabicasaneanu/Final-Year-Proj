@@ -4,7 +4,8 @@ import os
 import nmap
 import json
 import re
-from packaging import version
+from pkg_resources import packaging
+from pkg_resources import parse_version as version
 
 def writeHostAddress():
     x = netifaces.interfaces()
@@ -28,7 +29,7 @@ def writeHostAddress():
 host = writeHostAddress()
 #print netifaces.interfaces()
 interface = 'tun0'
-victim = '10.10.11.242'
+victim = '10.10.11.233'
 
         
 
@@ -66,15 +67,19 @@ for i in Vars:
     for title in titles:
         TitleVers = title['Title']
         for snow in TitleVers.split():
-            try: 
-                pawg = version.Version(snow)
-                if (version.parse(versionel) >= pawg) == True:
-                    print('exploit for:',i,'Version:',versionel,'\n-',title['Title'],title['Path'])
-                    
+            if isinstance(packaging.version.parse(snow), packaging.version.Version) and isinstance (packaging.version.parse(versionel),packaging.version.Version):
+                v2 = version(versionel)
                 
-            except:
-                pass
-            
+                pawg = version(snow)
+                
+                
+                
+                if v2 > pawg:        
+                    print('exploit for:',i,'Version:',versionel,'\n-',snow,title['Path']) 
+                   
+                
+                    
+                       
             
         
         
