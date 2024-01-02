@@ -55,28 +55,27 @@ x = a[1]
 for ports in portx:
     Vars[x[victim]['tcp'][ports]['product']] = x[victim]['tcp'][ports]['version']
     
-
-
+print(Vars)
+thispass = '' 
 for i in Vars:
-    output = subprocess.run(['sudo','searchsploit',i,'-j'], capture_output = True).stdout
-    logput = json.loads(output)
-    pogput = list(logput.values())
-    titles = pogput[2]
-    versione = Vars[i].split()
-    versionel = versione[0]
-    for title in titles:
-        TitleVers = title['Title']
-        for snow in TitleVers.split():
-            if isinstance(packaging.version.parse(snow), packaging.version.Version) and isinstance (packaging.version.parse(versionel),packaging.version.Version):
-                v2 = version(versionel)
-                
-                pawg = version(snow)
-                
-                
-                
-                if v2 > pawg:        
-                    print('exploit for:',i,'Version:',versionel,'\n-',snow,title['Path']) 
-                   
+    if not i:
+        continue
+    gong = i.split()
+    act = gong[0]
+    if re.match("^[A-Za-z_-]+$",act):
+        output = subprocess.run(['sudo','searchsploit',act,'-j'], capture_output = True).stdout
+        logput = json.loads(output)
+        pogput = list(logput.values())
+        titles = pogput[2]
+        versione = Vars[i].split()
+        versionel = versione[0]
+        print('\n','exploits for:',act,'-',versionel)
+        for title in titles:
+            TitleVers = title['Title']
+            print(title['Title'],title['Path'])
+            
+           
+                  
                 
                     
                        
@@ -99,19 +98,9 @@ for i in Vars:
 
 
 
-'''
-for host in nm.all_hosts():
-     for proto in nm[host].all_protocols():
-         print('----------')
-         print('Protocol : %s' % proto)
 
-         lport = nm[host][proto].keys()
-         sorted(lport)
-         for port in lport:
-             print ((port, nm[host][proto][port]['state']))
-'''
 
-                
+     
             
 
 
