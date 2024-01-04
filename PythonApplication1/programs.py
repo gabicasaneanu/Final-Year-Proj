@@ -5,6 +5,15 @@ import platform
 
 
 
+if platform.system() == 'Linux':
+    subprocess.run(['apt','safe-upgrade'])
+    quit()
+else:
+    #subprocess.popen(['choco','upgrade','all','-y'])
+    pass
+
+
+
 CMDcommand = subprocess.check_output(['wmic','product','get','name'])
 Programs = str(CMDcommand)
 APIrequest = requests.get('https://endoflife.date/api/all.json')
