@@ -1,8 +1,9 @@
 import subprocess
 import json
+import sys
 
 
-victim = '192.168.195.132'
+victim = sys.argv[1]
 
 #run siege for 10seconds, output in json format
 output = subprocess.run (['siege',victim,'-t','10s','-j'],capture_output=True).stdout
