@@ -1,7 +1,8 @@
 import subprocess 
 import re
+import sys
 
-victim = '192.168.195.132'
+victim = sys.argv[1]
 
 
     
