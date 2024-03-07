@@ -1,10 +1,10 @@
 import subprocess
 import nmap 
 import json 
-import re
+import sys
 from itertools import chain
 from pprint import pprint
-victim = '10.10.11.242'
+victim = sys.argv[1]
 
 nm = nmap.PortScanner()
 nmScan = nm.scan(hosts=victim, arguments= '-sSV -sC --script vuln')
