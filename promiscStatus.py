@@ -1,4 +1,4 @@
-from scapy.all import *
+
 import subprocess
 import sys
 import netifaces
