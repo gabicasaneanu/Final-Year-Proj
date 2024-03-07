@@ -1,34 +1,12 @@
 import subprocess
-import netifaces
 import os
 import nmap
 import json
-import re
+import sys
 from itertools import chain
-from pprint import pprint
-def writeHostAddress():
-    x = netifaces.interfaces()
-    x.pop(0)
-    
-    addresses = []
-    r = []
-
-    for i in x:
-        if '192' in netifaces.ifaddresses(i)[netifaces.AF_INET][0]['addr']:
-            pass
-        else:
-            addresses.append(netifaces.ifaddresses(i)[netifaces.AF_INET][0]['addr'])
-            
-    
-        
-    return (addresses[0])
-    
 
 
-host = writeHostAddress()
-#print netifaces.interfaces()
-interface = 'tun0'
-victim = '10.10.11.242'
+victim = sys.argv[1]
 
         
 
