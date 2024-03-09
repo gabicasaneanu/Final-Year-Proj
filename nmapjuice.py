@@ -53,14 +53,14 @@ varsxx = list(filter(None,varsx))
     
 CVEs = {}
 for i,x  in enumerate(varsxx):
-    print('services found : ',x, 'version - ', Titles[i])
+    print('<b> services found : ',x, 'version - ', Titles[i],'</b>','<br/>')
     output = subprocess.run(['sudo','searchsploit',x,'-j'], capture_output = True).stdout
     logput = json.loads(output)
     pogput = list(logput.values())
     titles = pogput[2]
-    somde = titles[-7:]
+    somde = titles[-10:]
     for som in somde:
-        print(som['Title'],som['Codes'])
+        print(som['Title'],som['Codes'],'<br/>')
         CVEs[som['Title']] = som['Codes'] 
           
          
