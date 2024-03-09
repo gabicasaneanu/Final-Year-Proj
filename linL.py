@@ -2,7 +2,6 @@ import os
 import wget
 import subprocess
 import json
-from pprint import pprint
 
 lin_url = 'https://github.com/carlospolop/PEASS-ng/releases/download/20240204-ab87b191/linpeas.sh'
 parser_url = 'https://raw.githubusercontent.com/carlospolop/PEASS-ng/master/parsers/peas2json.py'
