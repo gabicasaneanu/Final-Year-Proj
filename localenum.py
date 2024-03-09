@@ -8,7 +8,6 @@ from pprint import pprint
 
 les_exists_path = './temp/linux-exploit-suggester.sh'
 if os.path.isfile(les_exists_path):
-    print('already exists')
     LesScript = les_exists_path
 else:
     print('downloading')
@@ -52,5 +51,10 @@ for words in xx:
 
 bugformatted = [x for x in bug if x]     
 
-pprint(bugformatted)
+for bugs in bugformatted:
+    if bugs == 'Possible Exploits:':
+        print('<b>',bugs,'</b>','<br/>')
+    else:
+        print(bugs,'<br/>')
+    
 quit()
