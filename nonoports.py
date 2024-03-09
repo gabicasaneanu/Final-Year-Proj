@@ -2,6 +2,7 @@
 import nmap
 import sys
 
+
 victim = sys.argv[1]
 command = '-p 20,21,23,39,3389,5900-5902,512-514,873,53,111,2049,135-139,445,161,389,25,110,143,80,8000,8080,8888,1433,1521,3306,5000,5432,6379,27017-27018 -d -d'
 ports = [20,21,23,39,3389,5900,5901,5902,512,513,514,873,53,111,2049,135,136,137,138,139,445,161,389,25,110,143,80,8000,8080,8888,1433,1521,3306,5000,5432,6379,27017,27018]
@@ -40,20 +41,20 @@ if open_p == 'None':
 def pattern_check(port):
     for port_int in port:
         if port_int in rms_ports:
-            print('port :' ,port_int, ' is open - Disable always. Use SSHv2 or deploy the O&M audit system. ')
+            print('port :' ,port_int, ' is open - Disable always. Use SSHv2 or deploy the O&M audit system.<br/> ')
         if port_int in lan_ports:
-            print('port :',port_int,' is open - Disable always')
+            print('port :',port_int,' is open - Disable always<br/>')
         if port_int in internet_ports:
             if port_int == 25:
-                print('port :',port_int,' is open - Disable always. Use SMTPS instead') 
+                print('port :',port_int,' is open - Disable always. Use SMTPS instead<br/>') 
             if port_int == 110:
-                print('port :',port_int,' is open - Disable always. Use POP3S instead')
+                print('port :',port_int,' is open - Disable always. Use POP3S instead<br/>')
             if port_int == 143:
-                print('port :',port_int,' is open - Disable always. Use IMAPS instead')
+                print('port :',port_int,' is open - Disable always. Use IMAPS instead<br/>')
             if port_int == 80 or port_int == 8000 or port_int == 8080 or port_int == 8888:
-                print('port :',port_int,' is open - Disable recommended. Use HTTPS instead')
+                print('port :',port_int,' is open - Disable recommended. Use HTTPS instead<br/>')
         if port_int in database_ports:
-            print('port :',port_int,' is open - Disable always')
+            print('port :',port_int,' is open - Disable always<br/>')
             
             
 pattern_check(open_p)
