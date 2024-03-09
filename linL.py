@@ -67,15 +67,18 @@ colors_sections_indexed = []
 
 def ParserREDYELLOW(json_in):
     for keys in json_in:
+        print('<b>',keys,'</b>','<br/>')
         js_p = json_in[keys]['sections']
         for je in js_p:
             act = json_in[keys]['sections'][je]['lines']
             for acs in act:
                 gex = list(acs['colors'].keys())
                 if gex == ['RED'] or gex == ['REDYELLOW']:
-                    print(keys)
-                    sections[keys] = acs['clean_text']
-                    print(acs['clean_text'],' == ',gex)
+                    if acs['clean_text'] is None:
+                        break
+                    else:
+                        sections[keys] = acs['clean_text']
+                        print(acs['clean_text'],' == ',gex,'<br/>')
                     #print(json_in[keys]['sections'][je]['lines'])
                     
             break
