@@ -20,4 +20,22 @@ for x,p in enumerate(p_status):
     if p == '1':
         print('interface ' + n_ifaces[x] + ' operating in promiscuous mode ' + p +  ' - potential sniffing')
     else:
-        pass
+        print('interface ' + n_ifaces[x] + ' NOT operating in promiscuous mode <br/>')
+        
+        
+                    
+            
+
+    
+'''  
+packet = IP(dst = '8.8.8.8') / UDP() /DNS (rd = 1, qd = DNSQR(qname = 'www.google.com'))
+srloop(packet,count = 5)
+x = tcpdump([IP()/TCP(), IP()/UDP()])
+'''
+
+
+
+
+    
+
+ 
