@@ -19,6 +19,6 @@ loadsformatted =  [x for x in load if x]
 finalout = loadsformatted[-2]
 print(finalout)
 if 'NOT' in finalout:
-    print('BAD')
+    print('no load balancing detected for specified connection')
 else:
-    print('GOOD')
+    print('load balancing detected')
