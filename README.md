@@ -7,4 +7,5 @@ Before attempting to run any file, make sure to install dependencies
 
 Usage Guidelines: 
 1. LinL.py, localenum.py and promiscStatus.py can be run through the CLI using ('sudo python3', FileName.py)
-2. lbc.py,
+2. lbc.py, nmapVuln.py, nmapVulnpt2, lbc.py, packetfilter.py, and nonoports.py can be run through the CLI using ('sudo python3' + 'FileName.py' + '10.10.10.10')  <- External Host's I.P address
+3. Alternatively, you can run ('sudo python3 pmaker.py' + '10.10.10.10') in the terminal and this will output all modules in PDF format
