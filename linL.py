@@ -57,6 +57,8 @@ def BashCommands():
     else:
         os.system(second_bash_command)
         
+BashCommands()
+        
 json_file = open(final_out_path)
 json_data = json.load(json_file)
 
