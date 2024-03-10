@@ -51,7 +51,7 @@ def pdf():
     eth_header = Paragraph("<u>SNIFFING OUTPUT</u> <br/>",style=styles['Normal'])
     
     #network headers
-    nm2_header = Paragraph("<u>NMAP VULN SCAN OUTPUT</u> <br/>",style=styles['Normal'])
+    nm2_header = Paragraph("<u>NMAP HTTP ENUMERATION SCAN OUTPUT</u> <br/>",style=styles['Normal'])
     packet_filter_header = Paragraph("<u>PACKET FILTER OUTPUT</u> <br/>",style=styles['Normal'])
     lbc_header = Paragraph("<u>LOAD BALANCER OUTPUT</u> <br/>",style=styles['Normal'])
     nm_header = Paragraph("<u>SERVICE EXPLOIT OUTPUT</u> <br/>",style=styles['Normal'])
