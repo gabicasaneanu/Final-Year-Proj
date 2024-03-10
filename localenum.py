@@ -3,7 +3,6 @@ import os
 import os.path
 import re
 import wget
-from pprint import pprint
 
 
 les_exists_path = './temp/linux-exploit-suggester.sh'
