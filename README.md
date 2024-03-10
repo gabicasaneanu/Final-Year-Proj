@@ -1,6 +1,6 @@
 # Final Year Project - Tested on ParrotOS
 
-Each module is dependant from each other
+Each module is dependant from each other <br/>
 Before attempting to run any file, make sure to install dependencies
 
 (pip3 install -r requirements.txt)
