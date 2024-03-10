@@ -14,5 +14,3 @@ can be run through the CLI using (**'sudo python3' + 'FileName.py' + '10.10.10.1
    
 3. Alternatively, you can run (**'sudo python3 pmaker.py' + '10.10.10.10'**) in the terminal and this will output all modules in PDF format
 
-### Note - nmapVuln2.py is disabled by default on pmaker.py 
-   Remove the comment on line 69 (not recommended, runtime exceeds 3-4 minutes)
