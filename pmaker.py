@@ -66,7 +66,7 @@ def pdf():
     
     #run network commands
     
-    #nm2_text = run_command(nm2_command)
+    nm2_text = run_command(nm2_command)
     packet_filter_text = run_command(packet_filter_command)
     lbc_text = run_command(lbc_command)
     nm_text = run_command(nm_command)
@@ -81,7 +81,7 @@ def pdf():
     eth_para = Paragraph(eth_text, style=styles['Normal'])
     
     #network paragraphs
-    #nm2_para = Paragraph(nm2_text, style=styles['Normal'])
+    nm2_para = Paragraph(nm2_text, style=styles['Normal'])
     packet_filter_para = Paragraph(packet_filter_text, style=styles['Normal'])
     lbc_para = Paragraph(lbc_text, style=styles['Normal'])
     nm_para = Paragraph(nm_text, style=styles['Normal'])
@@ -105,7 +105,7 @@ def pdf():
     flowables.append(smallspacer)
     
     flowables.append(nm2_header)
-    #flowables.append(nm2_para)
+    flowables.append(nm2_para)
     flowables.append(spacer)
     
     flowables.append(packet_filter_header)
