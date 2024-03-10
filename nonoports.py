@@ -41,20 +41,20 @@ if open_p == 'None':
 def pattern_check(port):
     for port_int in port:
         if port_int in rms_ports:
-            print('port :' ,port_int, ' is open - Disable always. Use SSHv2 or deploy the O&M audit system.<br/> ')
+            print('port :' ,port_int, ' is <b>open</b> - Disable always. Use SSHv2 or deploy the O&M audit system.<br/> ')
         if port_int in lan_ports:
-            print('port :',port_int,' is open - Disable always<br/>')
+            print('port :',port_int,' is <b>open</b> - Disable always<br/>')
         if port_int in internet_ports:
             if port_int == 25:
-                print('port :',port_int,' is open - Disable always. Use SMTPS instead<br/>') 
+                print('port :',port_int,' is <b>open</b> - Disable always. Use SMTPS instead<br/>') 
             if port_int == 110:
-                print('port :',port_int,' is open - Disable always. Use POP3S instead<br/>')
+                print('port :',port_int,' is <b>open</b> - Disable always. Use POP3S instead<br/>')
             if port_int == 143:
-                print('port :',port_int,' is open - Disable always. Use IMAPS instead<br/>')
+                print('port :',port_int,' is <b>open</b> - Disable always. Use IMAPS instead<br/>')
             if port_int == 80 or port_int == 8000 or port_int == 8080 or port_int == 8888:
-                print('port :',port_int,' is open - Disable recommended. Use HTTPS instead<br/>')
+                print('port :',port_int,' is <b>open</b> - Disable recommended. Use HTTPS instead<br/>')
         if port_int in database_ports:
-            print('port :',port_int,' is open - Disable always<br/>')
+            print('port :',port_int,' is <b>open</b> - Disable always<br/>')
             
             
 pattern_check(open_p)
