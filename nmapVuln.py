@@ -58,7 +58,7 @@ for i,x  in enumerate(varsxx):
     logput = json.loads(output)
     pogput = list(logput.values())
     titles = pogput[2]
-    somde = titles[-10:]
+    somde = titles[-5:]
     for som in somde:
         print(som['Title'],som['Codes'],'<br/>')
         CVEs[som['Title']] = som['Codes'] 
