@@ -26,7 +26,7 @@ lbc_command = ('python3',current_dir+'/lbc.py',victim)
 nm_command = ('python3',current_dir+'/nmapVuln.py',victim)
 ports_command = ('python3',current_dir+'/nonoports.py',victim)
 csrf_command = ('python3',current_dir+'/csrf.py',victim)
-
+sql_command = ('python3',current_dir+'/sql.py',victim)
 
 
 def run_command(inp):
@@ -58,6 +58,8 @@ def pdf():
     nm_header = Paragraph("<u>SERVICE EXPLOIT OUTPUT</u> <br/>",style=styles['Normal'])
     ports_header = Paragraph("<u>OPEN PORTS OUTPUT</u> <br/>",style=styles['Normal'])
     csrf_header = Paragraph("<u>CROSS SITE REQUEST FORGERY OUTPUT</u> <br/>",style=styles['Normal'])
+    sql_header = Paragraph("<u>SQL INJECTION OUTPUT</u> <br/>",style=styles['Normal'])
+    
     
     
     
@@ -74,6 +76,7 @@ def pdf():
     nm_text = run_command(nm_command)
     ports_text = run_command(ports_command)
     csrf_text = run_command(csrf_command)
+    sql_text = run_command(sql_command)
     
     
     
@@ -90,9 +93,11 @@ def pdf():
     nm_para = Paragraph(nm_text, style=styles['Normal'])
     ports_para = Paragraph(ports_text, style=styles['Normal'])
     csrf_para = Paragraph(csrf_text, style = styles['Normal'])
+    sql_para = Paragraph(sql_text, style = styles['Normal'])
     
     spacer = KeepTogether(Spacer(1, 3*inch))
     smallspacer = KeepTogether(Spacer(1,1*inch))
+    medspacer = KeepTogether(Spacer(1,2*inch))
     
     
     
@@ -102,7 +107,7 @@ def pdf():
     
     flowables.append(les_header)
     flowables.append(les_para)
-    flowables.append(smallspacer)
+    flowables.append(medspacer)
     
     flowables.append(eth_header)
     flowables.append(eth_para)
@@ -110,7 +115,7 @@ def pdf():
     
     flowables.append(nm2_header)
     flowables.append(nm2_para)
-    flowables.append(spacer)
+    flowables.append(smallspacer)
     
     flowables.append(packet_filter_header)
     flowables.append(packet_filter_para)
@@ -118,7 +123,7 @@ def pdf():
     
     flowables.append(lbc_header)
     flowables.append(lbc_para)
-    flowables.append(smallspacer)
+    flowables.append(medspacer)
     
     flowables.append(nm_header)
     flowables.append(nm_para)
@@ -126,10 +131,15 @@ def pdf():
     
     flowables.append(ports_header)
     flowables.append(ports_para)
-    flowables.append(smallspacer)
+    flowables.append(spacer)
     
     flowables.append(csrf_header)
     flowables.append(csrf_para)
+    flowables.append(spacer)
+    
+    flowables.append(sql_header)
+    flowables.append(sql_para)
+    
     
    
     
