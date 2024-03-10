@@ -16,9 +16,9 @@ success = float(parseg['successful_transactions'])
 
 
 if parseg['transactions'] == parseg['successful_transactions']:
-    print('no packet filtering measures in place - configure packet filtering and/or nacl <br/>')
-    print('the transaction rate was:', parseg['transaction_rate'],'<br/>')
-    print('the availability was:',parseg['availability'],'<br/>')
+    print('<b>no packet filtering measures in place</b> <br/>: configure packet filtering and/or nacl <br/>')
+    print('<b>the transaction rate was:</b>', parseg['transaction_rate'],'<br/>')
+    print('<b>the availability was:</b>',parseg['availability'],'<br/>')
     quit()
 elif success >= (transactamount*0.80):
     print('success rate seems to be equal or more than 80% - packet filter may be misconfigured or not in place')
