@@ -25,6 +25,7 @@ packet_filter_command = ('python3',current_dir+'/packetfilter.py',victim)
 lbc_command = ('python3',current_dir+'/lbc.py',victim)
 nm_command = ('python3',current_dir+'/nmapVuln.py',victim)
 ports_command = ('python3',current_dir+'/nonoports.py',victim)
+csrf_command = ('python3',current_dir+'/csrf.py',victim)
 
 
 
@@ -56,6 +57,7 @@ def pdf():
     lbc_header = Paragraph("<u>LOAD BALANCER OUTPUT</u> <br/>",style=styles['Normal'])
     nm_header = Paragraph("<u>SERVICE EXPLOIT OUTPUT</u> <br/>",style=styles['Normal'])
     ports_header = Paragraph("<u>OPEN PORTS OUTPUT</u> <br/>",style=styles['Normal'])
+    csrf_header = Paragraph("<u>CROSS SITE REQUEST FORGERY OUTPUT</u> <br/>",style=styles['Normal'])
     
     
     
@@ -71,6 +73,7 @@ def pdf():
     lbc_text = run_command(lbc_command)
     nm_text = run_command(nm_command)
     ports_text = run_command(ports_command)
+    csrf_text = run_command(csrf_command)
     
     
     
@@ -86,6 +89,7 @@ def pdf():
     lbc_para = Paragraph(lbc_text, style=styles['Normal'])
     nm_para = Paragraph(nm_text, style=styles['Normal'])
     ports_para = Paragraph(ports_text, style=styles['Normal'])
+    csrf_para = Paragraph(csrf_text, style = styles['Normal'])
     
     spacer = KeepTogether(Spacer(1, 3*inch))
     smallspacer = KeepTogether(Spacer(1,1*inch))
@@ -122,6 +126,12 @@ def pdf():
     
     flowables.append(ports_header)
     flowables.append(ports_para)
+    flowables.append(smallspacer)
+    
+    flowables.append(csrf_header)
+    flowables.append(csrf_para)
+    
+   
     
     
     
