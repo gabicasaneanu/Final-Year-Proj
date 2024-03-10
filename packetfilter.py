@@ -16,7 +16,7 @@ success = float(parseg['successful_transactions'])
 
 
 if parseg['transactions'] == parseg['successful_transactions']:
-    print('<b>no packet filtering measures in place</b> <br/>: configure packet filtering and/or nacl <br/>')
+    print('<b>no packet filtering measures in place</b> <br/> configure packet filtering and/or nacl <br/>')
     print('<b>the transaction rate was:</b>', parseg['transaction_rate'],'<br/>')
     print('<b>the availability was:</b>',parseg['availability'],'<br/>')
     quit()
