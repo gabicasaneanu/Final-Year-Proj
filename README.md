@@ -9,7 +9,7 @@ Before attempting to run any file, make sure to install dependencies
 1. LinL.py, localenum.py and promiscStatus.py <br />
 can be run through the CLI using (**'sudo python3' + 'FileName.py'**)
    
-2. lbc.py, nmapVuln.py, nmapVulnpt2.py, csrf.py, sql.py, packetfilter.py AND nonoports.py <br />
+2. lbc.py, nmapVuln.py, nmapVulnpt2.py, csrf.py, sql.py, ftp.py, packetfilter.py AND nonoports.py <br />
 can be run through the CLI using (**'sudo python3' + 'FileName.py' + '10.10.10.10'**)  <- External Host's I.P address<br />
    
 3. Alternatively, you can run (**'sudo python3 pmaker.py' + '10.10.10.10'**) in the terminal and this will output all modules in PDF format
