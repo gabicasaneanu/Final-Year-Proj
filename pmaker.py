@@ -27,6 +27,7 @@ nm_command = ('python3',current_dir+'/nmapVuln.py',victim)
 ports_command = ('python3',current_dir+'/nonoports.py',victim)
 csrf_command = ('python3',current_dir+'/csrf.py',victim)
 sql_command = ('python3',current_dir+'/sql.py',victim)
+ftp_command = ('python3',current_dir+'/ftp.py',victim)
 
 
 def run_command(inp):
@@ -59,6 +60,7 @@ def pdf():
     ports_header = Paragraph("<u>OPEN PORTS OUTPUT</u> <br/>",style=styles['Normal'])
     csrf_header = Paragraph("<u>CROSS SITE REQUEST FORGERY OUTPUT</u> <br/>",style=styles['Normal'])
     sql_header = Paragraph("<u>SQL INJECTION OUTPUT</u> <br/>",style=styles['Normal'])
+    ftp_header = Paragraph("<u>FTP LOGIN OUTPUT</u> <br/>",style=styles['Normal'])
     
     
     
@@ -77,6 +79,7 @@ def pdf():
     ports_text = run_command(ports_command)
     csrf_text = run_command(csrf_command)
     sql_text = run_command(sql_command)
+    ftp_text = run_command(ftp_command)
     
     
     
@@ -94,6 +97,7 @@ def pdf():
     ports_para = Paragraph(ports_text, style=styles['Normal'])
     csrf_para = Paragraph(csrf_text, style = styles['Normal'])
     sql_para = Paragraph(sql_text, style = styles['Normal'])
+    ftp_para = Paragraph(ftp_text, style = styles['Normal'])
     
     spacer = KeepTogether(Spacer(1, 3*inch))
     smallspacer = KeepTogether(Spacer(1,1*inch))
@@ -139,6 +143,10 @@ def pdf():
     
     flowables.append(sql_header)
     flowables.append(sql_para)
+    flowables.append(smallspacer)
+    
+    flowables.append(ftp_header)
+    flowables.append(ftp_para)
     
     
    
