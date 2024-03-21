@@ -22,18 +22,18 @@ for i in range(tries):
     
 
     
-#if webserver not detected on port 80   
-if nm[victim]['tcp'][80]['state'] == 'closed':
-    print("no webserver detected")
-    quit()
-    
+
     
     
     
 a = list(nmScan.values())
 x = a[1]
 
-Vars = x[victim]['tcp'][80]['script']['http-csrf']
+try:
+    Vars = x[victim]['tcp'][80]['script']['http-csrf']
+except:
+    print('<b>No Cross Site Request Forgery Vulnerabilities Detected </b>')
+    quit()
 
 
 
