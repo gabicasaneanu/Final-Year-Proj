@@ -24,7 +24,12 @@ for i in range(tries):
 a = list(nmScan.values())
 x = a[1]
 
-Vars = x[victim]['tcp'][80]['script']['http-sql-injection']
+
+try:
+    Vars = x[victim]['tcp'][80]['script']['http-sql-injection']
+except:
+    print('<b> No SQL Injection Vulnerabilities Detected </b>')
+    quit()
 
 sem_format = Vars.split('\n')
 full_format = [x for x in sem_format if x]
