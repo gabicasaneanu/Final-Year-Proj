@@ -50,7 +50,7 @@ def pdf():
     #local headers
     lin_header = Paragraph("<u>LINPEAS OUTPUT</u> <br/>",style=styles['Normal'])
     les_header = Paragraph("<u>LINUX EXPLOIT SUGGESTER OUTPUT</u> <br/>",style=styles['Normal'])
-    eth_header = Paragraph("<u>SNIFFING OUTPUT</u> <br/>",style=styles['Normal'])
+    eth_header = Paragraph("<u>PORT STATUS OUTPUT</u> <br/>",style=styles['Normal'])
     
     #network headers
     nm2_header = Paragraph("<u>NMAP HTTP ENUMERATION SCAN OUTPUT</u> <br/>",style=styles['Normal'])
