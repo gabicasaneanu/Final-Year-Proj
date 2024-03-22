@@ -17,8 +17,6 @@ he = str(formatted)
 load = he.split('\\n')
 loadsformatted =  [x for x in load if x] 
 finalout = loadsformatted[-2]
-print(finalout)
+print('<b>'+finalout+'</b>')
 if 'NOT' in finalout:
     print('no load balancing detected for specified connection')
-else:
-    print('load balancing detected')
