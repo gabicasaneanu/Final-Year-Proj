@@ -1,11 +1,12 @@
 import subprocess
 import nmap 
-import json 
 import sys
 from itertools import chain
+
+#retrieve IP from CLI
 victim = sys.argv[1]
 
-
+#attempt NM scan 3 times - throw error if failed
 tries = 3
 for i in range(tries):
     try:
@@ -15,37 +16,28 @@ for i in range(tries):
         if i < tries - 1:
             continue
         else:
-            raise Exception('nmap scan failed - host may to be up, check host       connectivity / IP (Run Again, nmap may fail on occasion')
+            print('nmap scan failed - host may to be up, check host connectivity / IP (Run Again, nmap may fail on occasion')
+            quit()
     break
 
-protos = nm[victim].all_protocols() 
 
 
-
-if nm[victim]['tcp'][80]['state'] == 'closed':
-    print("no webserver detected")
-    quit()
-
-    
-  
-for proto in protos:
-    ports = nm[victim][proto].keys()
-    portx = list(ports)
-    
    
 a = list(nmScan.values())
 x = a[1]
 
-Vars = []
-
-for ports in portx:
-    Vars.append([x[victim]['tcp'][ports]['script']['http-enum']])
 
 
+try:
+    Vars = x[victim]['tcp'][80]['script']['http-enum']
+except:
+    print('<b> No HTTP Enumeration Vulnerabilities Detected </b>')
+    quit()
 
-list_vals = list(chain.from_iterable(Vars))
-real_vals = list_vals[0]
-sem_format = real_vals.split('\n')
+
+#format and output
+
+sem_format = Vars.split('\n')
 full_format = [x for x in sem_format if x]
 print('<b> HTTP Directory Enumeration </b> <br/>')
 for some in full_format:
