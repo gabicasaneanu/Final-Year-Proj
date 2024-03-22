@@ -18,9 +18,9 @@ n_ifaces = netifaces.interfaces()
 
 for x,p in enumerate(p_status):
     if p == '1':
-        print('interface ' + n_ifaces[x] + ' operating in promiscuous mode ' + p +  ' - potential sniffing')
+        print('interface <b> ' + n_ifaces[x] + '</b> operating in promiscuous mode ' + p +  ' - potential sniffing')
     else:
-        print('interface ' + n_ifaces[x] + ' NOT operating in promiscuous mode <br/>')
+        print('interface <b> ' + n_ifaces[x] + '</b> NOT operating in promiscuous mode <br/>')
         
         
                     
