@@ -8,11 +8,8 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus.flowables import KeepTogether
 
 
-try:
-    victim = sys.argv[1]
-except IndexError:
-    print('no victim IP provided')
-    quit()
+victim = sys.argv[1]
+    
 
 current_dir = os.getcwd()
 lin_command = ('python3',current_dir+'/linL.py')
@@ -62,94 +59,86 @@ def pdf():
     sql_header = Paragraph("<u>SQL INJECTION OUTPUT</u> <br/>",style=styles['Normal'])
     ftp_header = Paragraph("<u>FTP LOGIN OUTPUT</u> <br/>",style=styles['Normal'])
     
-    
-    
-    
-    #run local commands
-    lin_text = run_command(lin_command)
-    les_text = run_command(les_command)
-    eth_text = run_command(eth_command)
-    
-    #run network commands
-    
-    nm2_text = run_command(nm2_command)
-    packet_filter_text = run_command(packet_filter_command)
-    lbc_text = run_command(lbc_command)
-    nm_text = run_command(nm_command)
-    ports_text = run_command(ports_command)
-    csrf_text = run_command(csrf_command)
-    sql_text = run_command(sql_command)
-    ftp_text = run_command(ftp_command)
-    
-    
-    
-    
-    #make paragraphs
-    lin_para = Paragraph(lin_text, style=styles['Normal'])
-    les_para = Paragraph(les_text, style=styles['Normal'])
-    eth_para = Paragraph(eth_text, style=styles['Normal'])
-    
-    #network paragraphs
-    nm2_para = Paragraph(nm2_text, style=styles['Normal'])
-    packet_filter_para = Paragraph(packet_filter_text, style=styles['Normal'])
-    lbc_para = Paragraph(lbc_text, style=styles['Normal'])
-    nm_para = Paragraph(nm_text, style=styles['Normal'])
-    ports_para = Paragraph(ports_text, style=styles['Normal'])
-    csrf_para = Paragraph(csrf_text, style = styles['Normal'])
-    sql_para = Paragraph(sql_text, style = styles['Normal'])
-    ftp_para = Paragraph(ftp_text, style = styles['Normal'])
-    
     spacer = KeepTogether(Spacer(1, 3*inch))
     smallspacer = KeepTogether(Spacer(1,1*inch))
     medspacer = KeepTogether(Spacer(1,2*inch))
     
+    split_args = sys.argv[2].split()
+    
+    for arguments in split_args:
+        match arguments:
+            case '0':
+                lin_text = run_command(lin_command)
+                lin_para = Paragraph(lin_text, style=styles['Normal'])
+                flowables.append(lin_header)
+                flowables.append(lin_para)
+                flowables.append(smallspacer)
+            case '1':  
+                les_text = run_command(les_command)
+                les_para = Paragraph(les_text, style=styles['Normal'])
+                flowables.append(les_header)
+                flowables.append(les_para)
+                flowables.append(medspacer)
+            case '2':
+                eth_text = run_command(eth_command)
+                eth_para = Paragraph(eth_text, style=styles['Normal'])
+                flowables.append(eth_header)
+                flowables.append(eth_para)
+                flowables.append(smallspacer)
+            case '3':
+                nm2_text = run_command(nm2_command)
+                nm2_para = Paragraph(nm2_text, style=styles['Normal'])
+                flowables.append(nm2_header)
+                flowables.append(nm2_para)
+                flowables.append(smallspacer)
+            case '4':
+                packet_filter_text = run_command(packet_filter_command)
+                packet_filter_para = Paragraph(packet_filter_text, style=styles['Normal'])
+                flowables.append(packet_filter_header)
+                flowables.append(packet_filter_para)
+                flowables.append(smallspacer)
+            case '5':
+                lbc_text = run_command(lbc_command)
+                lbc_para = Paragraph(lbc_text, style=styles['Normal'])
+                flowables.append(lbc_header)
+                flowables.append(lbc_para)
+                flowables.append(medspacer)
+            case '6':
+                nm_text = run_command(nm_command)
+                nm_para = Paragraph(nm_text, style=styles['Normal'])
+                flowables.append(nm_header)
+                flowables.append(nm_para)
+                flowables.append(spacer)
+            case '7':
+                ports_text = run_command(ports_command)
+                ports_para = Paragraph(ports_text, style=styles['Normal'])
+                flowables.append(ports_header)
+                flowables.append(ports_para)
+                flowables.append(spacer)
+            case '8':
+                csrf_text = run_command(csrf_command)
+                csrf_para = Paragraph(csrf_text, style = styles['Normal'])
+                flowables.append(csrf_header)
+                flowables.append(csrf_para)
+                flowables.append(spacer)
+            case '9':
+                sql_text = run_command(sql_command)
+                sql_para = Paragraph(sql_text, style = styles['Normal'])
+                flowables.append(sql_header)
+                flowables.append(sql_para)
+                flowables.append(smallspacer)
+            case '10':  
+                ftp_text = run_command(ftp_command)
+                ftp_para = Paragraph(ftp_text, style = styles['Normal'])  
+                flowables.append(ftp_header)
+                flowables.append(ftp_para)
+                flowables.append(smallspacer)
     
     
-    flowables.append(lin_header)
-    flowables.append(lin_para)
-    flowables.append(smallspacer)
-    
-    flowables.append(les_header)
-    flowables.append(les_para)
-    flowables.append(medspacer)
-    
-    flowables.append(eth_header)
-    flowables.append(eth_para)
-    flowables.append(smallspacer)
-    
-    flowables.append(nm2_header)
-    flowables.append(nm2_para)
-    flowables.append(smallspacer)
-    
-    flowables.append(packet_filter_header)
-    flowables.append(packet_filter_para)
-    flowables.append(smallspacer)
-    
-    flowables.append(lbc_header)
-    flowables.append(lbc_para)
-    flowables.append(medspacer)
-    
-    flowables.append(nm_header)
-    flowables.append(nm_para)
-    flowables.append(spacer)
-    
-    flowables.append(ports_header)
-    flowables.append(ports_para)
-    flowables.append(spacer)
-    
-    flowables.append(csrf_header)
-    flowables.append(csrf_para)
-    flowables.append(spacer)
-    
-    flowables.append(sql_header)
-    flowables.append(sql_para)
-    flowables.append(smallspacer)
-    
-    flowables.append(ftp_header)
-    flowables.append(ftp_para)
     
     
-   
+    
+    
     
     
     
@@ -157,6 +146,7 @@ def pdf():
     
     
  
+
     doc.build(flowables)
     
     
