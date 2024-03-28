@@ -1,3 +1,4 @@
 netifaces
 reportlab
 python-nmap
+wget
