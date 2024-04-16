@@ -29,7 +29,7 @@ try:
         ports = nm[victim][proto].keys()
         portx = list(ports)
 except:
-    print('nmap scan failed, try running again')
+    print('nmap scan failed, check IP address')
     quit()
     
        
@@ -41,9 +41,13 @@ Titles = []
 
 a = list(nmScan.values())
 x = a[1]
-for ports in portx:
-    Vars.append([x[victim]['tcp'][ports]['product']])
-    Titles.append([x[victim]['tcp'][ports]['version']])
+try:
+    for ports in portx:
+        Vars.append([x[victim]['tcp'][ports]['product']])
+        Titles.append([x[victim]['tcp'][ports]['version']])
+except:
+    print('nmap scan failed, check IP address')
+    quit()
 
 varsx = list(chain.from_iterable(Vars))    
 varsxx = list(filter(None,varsx))
