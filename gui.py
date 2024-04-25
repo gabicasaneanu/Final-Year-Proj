@@ -1,13 +1,27 @@
 import tkinter as tk
 from tkinter import ttk
 import subprocess
+import nmap
 
 victim_input = ""
 
 def switch_window():
     global victim_input
     victim_input = victim_entry.get()
-    if victim_input:
+    try:
+        nm = nmap.PortScanner()
+        nmScan = nm.scan(hosts = victim_input,arguments = '')
+        state = nm[victim_input].state()
+        print(state)
+        if state == 'up':
+            upStatus = True
+        else:
+            upStatus = False
+    except:
+        error_label.config(text= "not a valid IP address/Host status is down")
+        return
+        
+    if victim_input and upStatus:
         first_window.withdraw()
         second_window.deiconify()
         victim_label.config(text="Victim: " + victim_input)
@@ -26,7 +40,7 @@ def perform_command():
 # First Window
 first_window = tk.Tk()
 first_window.title("Vulnerability Scanner")
-first_window.geometry("400x400")
+first_window.geometry("350x500")
 
 
 placeholder_image = tk.PhotoImage(file="temp/img.png")  
@@ -35,6 +49,9 @@ image_label.grid(row=0, column=0, columnspan=2, sticky="nsew")
 
 victim_label = tk.Label(first_window, text="Victim")
 victim_label.grid(row=1, column=0, sticky="e", padx=5, pady=5)
+
+error_label = tk.Label(first_window,text = "")
+error_label.grid(row=3,column=0,columnspan = 2,padx=5,pady=5)
 
 victim_entry = tk.Entry(first_window)
 victim_entry.grid(row=1, column=1, sticky="w", padx=5, pady=5)
