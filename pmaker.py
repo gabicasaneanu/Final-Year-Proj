@@ -26,6 +26,7 @@ csrf_command = ('python3',current_dir+'/csrf.py',victim)
 sql_command = ('python3',current_dir+'/sql.py',victim)
 ftp_command = ('python3',current_dir+'/ftp.py',victim)
 http_logins_command = ('python3',current_dir+'/httplogins.py',victim)
+nbt_command = ('python3',current_dir+'/netbios.py',victim)
 
 def run_command(inp):
     x = subprocess.run(inp, capture_output = True).stdout
@@ -59,6 +60,7 @@ def pdf():
     sql_header = Paragraph("<u>SQL INJECTION OUTPUT</u> <br/>",style=styles['Normal'])
     ftp_header = Paragraph("<u>FTP LOGIN OUTPUT</u> <br/>",style=styles['Normal'])
     http_logins_header = Paragraph("<u>HTTP DEFAULT LOGIN OUTPUT</u> <br/>",style=styles['Normal'])
+    nbt_header = Paragraph("<u>NETBIOS NAME TABLE INFORMATION</u> <br/>", style =styles['Normal'])
     
     spacer = KeepTogether(Spacer(1, 3*inch))
     smallspacer = KeepTogether(Spacer(1,1*inch))
@@ -140,7 +142,13 @@ def pdf():
                 flowables.append(http_logins_header)
                 flowables.append(http_logins_para)
                 flowables.append(smallspacer)
-    
+            case '12':
+                nbt_text = run_command(nbt_command)
+                nbt_para = Paragraph(nbt_text, style = styles['Normal'])
+                flowables.append(nbt_header)
+                flowables.append(nbt_para)
+                flowables.append(smallspacer)
+                
     
     
     
