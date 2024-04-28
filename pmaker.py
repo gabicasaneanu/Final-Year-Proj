@@ -25,7 +25,7 @@ ports_command = ('python3',current_dir+'/nonoports.py',victim)
 csrf_command = ('python3',current_dir+'/csrf.py',victim)
 sql_command = ('python3',current_dir+'/sql.py',victim)
 ftp_command = ('python3',current_dir+'/ftp.py',victim)
-
+http_logins_command = ('python3',current_dir+'/httplogins.py',victim)
 
 def run_command(inp):
     x = subprocess.run(inp, capture_output = True).stdout
@@ -58,6 +58,7 @@ def pdf():
     csrf_header = Paragraph("<u>CROSS SITE REQUEST FORGERY OUTPUT</u> <br/>",style=styles['Normal'])
     sql_header = Paragraph("<u>SQL INJECTION OUTPUT</u> <br/>",style=styles['Normal'])
     ftp_header = Paragraph("<u>FTP LOGIN OUTPUT</u> <br/>",style=styles['Normal'])
+    http_logins_header = Paragraph("<u>HTTP DEFAULT LOGIN OUTPUT</u> <br/>",style=styles['Normal'])
     
     spacer = KeepTogether(Spacer(1, 3*inch))
     smallspacer = KeepTogether(Spacer(1,1*inch))
@@ -133,7 +134,12 @@ def pdf():
                 flowables.append(ftp_header)
                 flowables.append(ftp_para)
                 flowables.append(smallspacer)
-    
+            case '11':
+                http_logins_text = run_command(http_logins_command)
+                http_logins_para = Paragraph(http_logins_text, style = styles['Normal'])
+                flowables.append(http_logins_header)
+                flowables.append(http_logins_para)
+                flowables.append(smallspacer)
     
     
     
