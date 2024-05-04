@@ -137,7 +137,7 @@ def ftp_info():
     info.add(String(3,50,'https://www.techtarget.com/whatis/definition/anonymous-FTP-File-Transfer-Protocol',fontSize = 12,setFont='Helvetica-Bold',fillColor = colors.black))
     return(info)
     
-def http_login_info():
+def http_logins_info():
     info = Drawing(100,100)
     info.add(Rect(0,30,510,80, fillColor = colors.white))
     info.add(String(3,88,'Tests for access with default credentials used by a variety of web applications and devices.',fontSize = 12,fillColor = colors.black))
