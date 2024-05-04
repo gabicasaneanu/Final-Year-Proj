@@ -27,7 +27,7 @@ def switch_window():
         victim_label.config(text="Victim: " + victim_input)
 
 def perform_command():
-    vals = ["LinPeas Enumeration", "Linux Exploit Suggester", "Port Status Check","HTTP enumeration","Packet Filter Detection","Load Balancer Output","Running Service Exploits","Host Open Ports Detection","XSS Forgery Detection Output","SQL Injection Detection","Anonymous FTP Login Detection","HTTP Default Login Detection","NetBIOS Name Table Information"]
+    vals = ["LinPeas Enumeration", "Linux Exploit Suggester", "Port Status Check","HTTP enumeration","DDOS Measure Detection","Load Balancer Output","Running Service Exploits","Host Open Ports Detection","XSS Forgery Detection Output","SQL Injection Detection","Anonymous FTP Login Detection","HTTP Default Login Detection","NetBIOS Name Table Information"]
     args = []
     string = ''
     for option, var in option_vars.items():
@@ -67,7 +67,7 @@ second_window.withdraw()  # Hide the window initially
 
 option_vars = {}
 
-option_list = ["LinPeas Enumeration", "Linux Exploit Suggester", "Port Status Check","HTTP enumeration","Packet Filter Detection","Load Balancer Output","Running Service Exploits","Host Open Ports Detection","XSS Forgery Detection Output","SQL Injection Detection","Anonymous FTP Login Detection","HTTP Default Login Detection","NetBIOS Name Table Information"]
+option_list = ["LinPeas Enumeration", "Linux Exploit Suggester", "Port Status Check","HTTP enumeration","DDOS Measure Detection","Load Balancer Output","Running Service Exploits","Host Open Ports Detection","XSS Forgery Detection Output","SQL Injection Detection","Anonymous FTP Login Detection","HTTP Default Login Detection","NetBIOS Name Table Information"]
 
 for i, option in enumerate(option_list):
     option_var = tk.BooleanVar(value=False)
