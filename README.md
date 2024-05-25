@@ -1,7 +1,7 @@
 # Final Year Project - Tested on ParrotOS
 
-Python version needs to be 3.10 or newer
-Before attempting to run any file, make sure to install dependencies
+Python version needs to be 3.10 or newer<br />
+Before attempting to run any file, make sure to install dependencies<br />
 (pip3 install -r requirements.txt)
 
 ## Usage Guidelines:
